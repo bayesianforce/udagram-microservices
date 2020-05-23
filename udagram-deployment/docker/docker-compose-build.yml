@@ -1,0 +1,18 @@
+version: "3"
+services:
+  ud-reverse-proxy:
+    build:
+      context: .
+    image: vabar/udagram-reverse-proxy
+  ud-api-user:
+    build:
+      context: ../../udagram-api-user
+    image: vabar/udagram-api-user
+  ud-api-feed:
+    build:
+      context: ../../udagram-api-feed
+    image: vabar/udagram-api-feed
+  ud-frontend:
+    build:
+      context: ../../udagram-frontend
+    image: vabar/udagram-frontend
