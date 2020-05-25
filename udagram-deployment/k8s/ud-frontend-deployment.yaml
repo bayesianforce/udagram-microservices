@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: ud-frontend
+  name: ud-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: ud-frontend
+  template:
+    metadata:
+      labels:
+        service: ud-frontend
+        api: external
+    spec:
+      containers:
+        - image: vabar/udagram-frontend
+          name: ud-frontend
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "1024Mi"
+              cpu: "500m"
+      restartPolicy: Always
